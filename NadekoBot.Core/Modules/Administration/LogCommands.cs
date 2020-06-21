@@ -118,7 +118,7 @@ namespace NadekoBot.Modules.Administration
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
             [UserPerm(GuildPerm.ManageChannels)]
-            [OwnerOnly]
+            //[OwnerOnly]
             public async Task Log(LogType type)
             {
                 var val = _service.Log(ctx.Guild.Id, ctx.Channel.Id, type);

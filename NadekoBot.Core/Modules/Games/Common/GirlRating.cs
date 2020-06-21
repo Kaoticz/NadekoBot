@@ -36,7 +36,7 @@ namespace NadekoBot.Modules.Games.Common
             Advice = advice; // convenient to have it here, even though atm there are only few different ones.
             _httpFactory = factory;
 
-            Stream = new AsyncLazy<Stream>(async () =>
+            Stream = new AsyncLazy<Stream>( () =>
             {
                 try
                 {

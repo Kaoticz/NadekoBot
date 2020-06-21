@@ -26,7 +26,7 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.BanMembers)]
+            [UserPerm(GuildPerm.KickMembers)]
             public async Task Warn(IGuildUser user, [Leftover] string reason = null)
             {
                 if (ctx.User.Id != user.Guild.OwnerId
@@ -72,7 +72,7 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.BanMembers)]
+            [UserPerm(GuildPerm.KickMembers)]
             [Priority(2)]
             public Task Warnlog(int page, IGuildUser user)
                 => Warnlog(page, user.Id);
@@ -89,14 +89,14 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.BanMembers)]
+            [UserPerm(GuildPerm.KickMembers)]
             [Priority(0)]
             public Task Warnlog(int page, ulong userId)
                 => InternalWarnlog(userId, page - 1);
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.BanMembers)]
+            [UserPerm(GuildPerm.KickMembers)]
             [Priority(1)]
             public Task Warnlog(ulong userId)
                 => InternalWarnlog(userId, 0);
@@ -140,7 +140,7 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.BanMembers)]
+            [UserPerm(GuildPerm.KickMembers)]
             public async Task WarnlogAll(int page = 1)
             {
                 if (--page < 0)
@@ -202,6 +202,7 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
+            [UserPerm(GuildPerm.ManageRoles)]
             [UserPerm(GuildPerm.BanMembers)]
             public async Task WarnPunish(int number, PunishmentAction punish, StoopidTime time = null)
             {
@@ -217,6 +218,7 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
+            [UserPerm(GuildPerm.ManageRoles)]
             [UserPerm(GuildPerm.BanMembers)]
             public async Task WarnPunish(int number)
             {

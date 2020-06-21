@@ -24,9 +24,9 @@ namespace NadekoBot.Modules.Administration
                 var user = await ctx.Guild.GetCurrentUserAsync().ConfigureAwait(false);
 
                 if (parameter == "-s" || parameter == "--safe")
-                    await _service.PruneWhere((ITextChannel)ctx.Channel, 100, (x) => x.Author.Id == user.Id && !x.IsPinned).ConfigureAwait(false);
+                    await _service.PruneWhere((ITextChannel)ctx.Channel, 10, (x) => x.Author.Id == user.Id && !x.IsPinned).ConfigureAwait(false);
                 else
-                    await _service.PruneWhere((ITextChannel)ctx.Channel, 100, (x) => x.Author.Id == user.Id).ConfigureAwait(false);
+                    await _service.PruneWhere((ITextChannel)ctx.Channel, 10, (x) => x.Author.Id == user.Id).ConfigureAwait(false);
                 ctx.Message.DeleteAfter(3);
             }
             // prune x
@@ -40,8 +40,8 @@ namespace NadekoBot.Modules.Administration
                 count++;
                 if (count < 1)
                     return;
-                if (count > 1000)
-                    count = 1000;
+                if (count > 100)
+                    count = 100;
 
                 if (parameter == "-s" || parameter == "--safe")
                     await _service.PruneWhere((ITextChannel)ctx.Channel, count, (x) => !x.IsPinned).ConfigureAwait(false);
@@ -55,7 +55,7 @@ namespace NadekoBot.Modules.Administration
             [UserPerm(ChannelPerm.ManageMessages)]
             [BotPerm(ChannelPerm.ManageMessages)]
             [Priority(0)]
-            public Task Prune(IGuildUser user, int count = 100, string parameter = null)
+            public Task Prune(IGuildUser user, int count = 10, string parameter = null)
                 => Prune(user.Id, count, parameter);
 
             //prune userid [x]
@@ -64,7 +64,7 @@ namespace NadekoBot.Modules.Administration
             [UserPerm(ChannelPerm.ManageMessages)]
             [BotPerm(ChannelPerm.ManageMessages)]
             [Priority(0)]
-            public async Task Prune(ulong userId, int count = 100, string parameter = null)
+            public async Task Prune(ulong userId, int count = 10, string parameter = null)
             {
                 if (userId == ctx.User.Id)
                     count++;
@@ -72,8 +72,8 @@ namespace NadekoBot.Modules.Administration
                 if (count < 1)
                     return;
 
-                if (count > 1000)
-                    count = 1000;
+                if (count > 100)
+                    count = 100;
 
                 if (parameter == "-s" || parameter == "--safe")
                     await _service.PruneWhere((ITextChannel)ctx.Channel, count, m => m.Author.Id == userId && DateTime.UtcNow - m.CreatedAt < twoWeeks && !m.IsPinned).ConfigureAwait(false);

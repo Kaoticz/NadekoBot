@@ -28,8 +28,8 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.Administrator)]
-            [OwnerOnly]
+            [UserPerm(GuildPerm.ManageChannels)]
+            //[OwnerOnly]
             public async Task LogServer(PermissionAction action)
             {
                 await _service.LogServer(ctx.Guild.Id, ctx.Channel.Id, action.Value).ConfigureAwait(false);
@@ -41,8 +41,8 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.Administrator)]
-            [OwnerOnly]
+            [UserPerm(GuildPerm.ManageChannels)]
+            //[OwnerOnly]
             public async Task LogIgnore()
             {
                 var channel = (ITextChannel)ctx.Channel;
@@ -57,8 +57,8 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.Administrator)]
-            [OwnerOnly]
+            [UserPerm(GuildPerm.ManageChannels)]
+            //[OwnerOnly]
             public async Task LogEvents()
             {
                 _service.GuildLogSettings.TryGetValue(ctx.Guild.Id, out LogSetting l);
@@ -117,7 +117,7 @@ namespace NadekoBot.Modules.Administration
 
             [NadekoCommand, Usage, Description, Aliases]
             [RequireContext(ContextType.Guild)]
-            [UserPerm(GuildPerm.Administrator)]
+            [UserPerm(GuildPerm.ManageChannels)]
             [OwnerOnly]
             public async Task Log(LogType type)
             {

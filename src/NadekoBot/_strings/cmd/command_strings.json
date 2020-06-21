@@ -500,7 +500,7 @@
   },
   "prune": {
     "Cmd": "prune clear",
-    "Desc": "`{0}prune` removes all Nadeko's messages in the last 100 messages. `{0}prune X` removes last `X` number of messages from the channel (up to 100). `{0}prune @Someone` removes all Someone's messages in the last 100 messages. `{0}prune @Someone X` removes last `X` number of 'Someone's' messages in the channel. You can use the `-s` / `--safe` parameter at the end to only prune messages that are not pinned.",
+    "Desc": "`{0}prune` removes all Nadeko's messages in the last 10 messages. `{0}prune X` removes last `X` number of messages from the channel (up to 200). `{0}prune @Someone` removes all Someone's messages in the last 10 messages. `{0}prune @Someone X` removes last `X` number of 'Someone's' messages in the channel. You can use the `-s` / `--safe` parameter at the end to only prune messages that are not pinned.",
     "Usage": [
       "{0}prune",
       "{0}prune -s",
@@ -2517,7 +2517,7 @@
   },
   "restartshard": {
     "Cmd": "restartshard",
-    "Desc": "Try (re)connecting a shard with a certain shardid when it dies. No one knows will it work. Keep an eye on the console for errors.",
+    "Desc": "Try (re)connecting a shard with a certain shardid when it dies. There is no way to tell if it will work. Keep an eye on the console for errors.",
     "Usage": [
       "{0}restartshard 2"
     ]
@@ -2637,8 +2637,8 @@
     "Cmd": "alias cmdmap",
     "Desc": "Create a custom alias for a certain Nadeko command. Provide no alias to remove the existing one.",
     "Usage": [
-      "{0}alias allin {0}bf all h",
-      "{0}alias \"linux thingy\" >loonix Spyware Windows"
+      "{0}alias \"{0}shutup\" {0}mute",
+      "{0}alias \"{0}daily\" {0}timely"
     ]
   },
   "warnlog": {
@@ -2746,7 +2746,7 @@
   },
   "claimpatreonrewards": {
     "Cmd": "clparew claparew",
-    "Desc": "Claim patreon rewards. If you're subscribed to bot owner's patreon you can use this command to claim your rewards - assuming bot owner did setup has their patreon key.",
+    "Desc": "Claim patreon rewards. If you're subscribed to the bot owner's patreon, you can use this command to claim your rewards in DM with the bot, assuming the bot owner has set up their patreon key.",
     "Usage": [
       "{0}clparew"
     ]

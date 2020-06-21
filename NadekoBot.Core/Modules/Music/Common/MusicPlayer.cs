@@ -277,9 +277,21 @@ namespace NadekoBot.Modules.Music.Common
                             currentIndex = Queue.CurrentIndex;
                         }
 
+                        /*
                         if (AutoDelete && !RepeatCurrentSong && !RepeatPlaylist && data.Song != null)
                         {
                             Queue.RemoveSong(data.Song);
+                        }
+                        */
+                        
+                        if (!Autoplay && !RepeatCurrentSong && !RepeatPlaylist && data.Song != null)
+                        {
+                            AutoDelete = true;
+                            Queue.RemoveSong(data.Song);
+                        }
+                        else
+                        {
+                            AutoDelete = false;
                         }
 
                         if (!manualIndex && (!RepeatCurrentSong || manualSkip))
@@ -370,7 +382,7 @@ namespace NadekoBot.Modules.Music.Common
             }
         }
 
-        private async Task<IAudioClient> GetAudioClient(bool reconnect = false)
+        private async Task<IAudioClient> GetAudioClient(bool reconnect = true)
         {
             if (_audioClient == null ||
                 _audioClient.ConnectionState != ConnectionState.Connected ||
@@ -499,11 +511,11 @@ namespace NadekoBot.Modules.Music.Common
             }
         }
 
-        public void Stop(bool clearQueue = false)
+        public void Stop(bool clearQueue = true)
         {
             lock (locker)
             {
-                Stopped = true;
+                //Stopped = true;
                 Autoplay = false;
                 //Queue.ResetCurrent();
                 if (clearQueue)

@@ -73,7 +73,7 @@ namespace NadekoBot.Modules.Utility.Services
                             newInput = maps[k];
                         else
                             continue;
-
+                        /* // Removing alias confirmation message. Uncomment to enable
                         try
                         {
                             var toDelete = await channel.SendConfirmAsync($"{input} => {newInput}").ConfigureAwait(false);
@@ -86,7 +86,7 @@ namespace NadekoBot.Modules.Utility.Services
                                 }).ConfigureAwait(false);
                             });
                         }
-                        catch { }
+                        catch { }*/
                         return newInput;
                     }
                 }
